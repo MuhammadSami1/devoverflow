@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer theme {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* dark */
+    --color-dark-100: #000000;
+    --color-dark-200: #0f1117;
+    --color-dark-300: #151821;
+    --color-dark-400: #212734;
+    --color-dark-500: #3f4354;
+    --color-dark-600: #101012;
+
+    --color-dark-gradient: linear-gradient(
+      232deg,
+      rgba(23, 28, 35, 0.41) 0%,
+      rgba(19, 22, 28, 0.7) 100%
+    );
+
+    /* light */
+    --color-light-900: #ffffff;
+    --color-light-850: #fdfdfd;
+    --color-light-800: #f4f6f8;
+    --color-light-700: #dce3f1;
+    --color-light-500: #7b8ec8;
+    --color-light-400: #858ead;
+    --color-light-300: #e2ecff;
+
+    --color-accentGradient: linear-gradient(to right, #ff7000 0%, #e2995f 100%);
+    --color-accent: #ff7000;
   }
 }
 
+@theme {
+  /* dark */
+  --color-primary-dark: var(--color-dark-100);
+  --color-secondary-dark: var(--color-dark-200);
+  --color-tertiary-dark: var(--color-dark-300);
+  --color-fourth-dark: var(--color-dark-400);
+  --color-fifth-dark: var(--color-dark-500);
+  --color-sixth-dark: var(--color-dark-600);
+  --color-dark-gradient: var(--color-dark-gradient);
+
+  /* light */
+  --color-primary-light: var(--color-light-900);
+  --color-secondary-light: var(--color-light-850);
+  --color-tertiary-light: var(--color-light-800);
+  --color-fourth-light: var(--color-light-700);
+  --color-fifth-light: var(--color-light-500);
+  --color-sixth-light: var(--color-light-400);
+  --color-seveth-light: var(--color-light-300);
+
+  --color-accent-gradient: var(--color-accentGradient);
+  --color-accent: var(--color-accent);
+}
+
+/* Beacuse tailwind v4, Background gradients are treated as images, not simple color valuesof  */
+@layer utilities {
+  .bg-accent-gradient {
+    background-image: var(--color-accent-gradient);
+  }
+
+  .border-tertiary-dark {
+    border-color: var(--color-tertiary-dark);
+  }
+}
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  background-color: #000000;
 }
